@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		057C756B2DA5B49500F4CEB6 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 057C756A2DA5B49500F4CEB6 /* ComposableArchitecture */; };
+		057C75852DA5B87800F4CEB6 /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 057C75842DA5B87800F4CEB6 /* Dependencies */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		057C755B2DA5B3D600F4CEB6 /* MovieAppTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				057C756B2DA5B49500F4CEB6 /* ComposableArchitecture in Frameworks */,
+				057C75852DA5B87800F4CEB6 /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = MovieAppTCA;
 			packageProductDependencies = (
+				057C756A2DA5B49500F4CEB6 /* ComposableArchitecture */,
+				057C75842DA5B87800F4CEB6 /* Dependencies */,
 			);
 			productName = MovieAppTCA;
 			productReference = 057C755B2DA5B3D600F4CEB6 /* MovieAppTCA.app */;
@@ -94,6 +103,10 @@
 			);
 			mainGroup = 057C75522DA5B3D600F4CEB6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				057C75692DA5B49500F4CEB6 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				057C75832DA5B87800F4CEB6 /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 057C755C2DA5B3D600F4CEB6 /* Products */;
 			projectDirPath = "";
@@ -261,6 +274,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -289,6 +303,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,6 +339,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		057C75692DA5B49500F4CEB6 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.19.0;
+			};
+		};
+		057C75832DA5B87800F4CEB6 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		057C756A2DA5B49500F4CEB6 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057C75692DA5B49500F4CEB6 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		057C75842DA5B87800F4CEB6 /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 057C75832DA5B87800F4CEB6 /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 057C75532DA5B3D600F4CEB6 /* Project object */;
 }
