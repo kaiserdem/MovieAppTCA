@@ -1,6 +1,5 @@
 import SwiftUI
 import ComposableArchitecture
-//import MovieAppTCA_Core
 
 struct MovieDetailView: View {
     let store: StoreOf<MovieListFeature>

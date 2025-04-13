@@ -1,7 +1,9 @@
 import SwiftUI
 import ComposableArchitecture
 
+/// Головний екран додатку, що відображає список фільмів
 struct MovieListView: View {
+    /// Store для управління станом та діями
     let store: StoreOf<MovieListFeature>
     
     var body: some View {
@@ -9,44 +11,15 @@ struct MovieListView: View {
             NavigationView {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 20) {
-                        // Топ фільмів
+                        // Секція з популярними фільмами
                         CategorySection(title: "Popular movies") {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 15) {
                                     ForEach(viewStore.movies) { movie in
                                         MovieCard(movie: movie)
                                             .onTapGesture {
+                                                // При кліку на картку фільму відправляємо дію вибору
                                                 viewStore.send(.movieSelected(movie))
-                                            }
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
-                        }
-                        
-                        // Топ серіалів
-                        CategorySection(title: "Popular TV series") {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 15) {
-                                    ForEach(viewStore.tvShows) { show in
-                                        TVShowCard(show: show)
-                                            .onTapGesture {
-                                                viewStore.send(.tvShowSelected(show))
-                                            }
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
-                        }
-                        
-                        // Популярні персони
-                        CategorySection(title: "Popular people") {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 15) {
-                                    ForEach(viewStore.persons) { person in
-                                        PersonCard(person: person)
-                                            .onTapGesture {
-                                                viewStore.send(.personSelected(person))
                                             }
                                     }
                                 }
@@ -57,29 +30,19 @@ struct MovieListView: View {
                     .padding(.vertical)
                 }
                 .customBackground()
-                .navigationTitle("Categories")
+                .navigationTitle("Movies")
                 .foregroundColor(.white)
                 .navigationBarTitleTextColor(.white)
                 .onAppear {
+                    // При появі екрану завантажуємо дані
                     viewStore.send(.onAppear)
                 }
+                // Повноекранний перегляд деталей фільму
                 .fullScreenCover(item: viewStore.binding(
                     get: { $0.selectedMovie },
                     send: { _ in .dismissDetail }
                 )) { movie in
                     MovieDetailView(store: store, movie: movie)
-                }
-                .fullScreenCover(item: viewStore.binding(
-                    get: { $0.selectedTVShow },
-                    send: { _ in .dismissDetail }
-                )) { show in
-                    TVShowDetailView(store: store, show: show)
-                }
-                .fullScreenCover(item: viewStore.binding(
-                    get: { $0.selectedPerson },
-                    send: { _ in .dismissDetail }
-                )) { person in
-                    PersonDetailView(store: store, person: person)
                 }
             }
             .customNavigationBar()
@@ -87,11 +50,13 @@ struct MovieListView: View {
     }
 }
 
+/// Компонент для відображення рядка з фільмом у списку
 struct MovieRow: View {
     let movie: Movie
     
     var body: some View {
         HStack(spacing: 12) {
+            // Постер фільму
             if let url = movie.posterURL {
                 AsyncImage(url: url) { image in
                     image
@@ -104,6 +69,7 @@ struct MovieRow: View {
                 .cornerRadius(8)
             }
             
+            // Інформація про фільм
             VStack(alignment: .leading, spacing: 4) {
                 Text(movie.title)
                     .font(.headline)
@@ -112,6 +78,7 @@ struct MovieRow: View {
                     .font(.subheadline)
                     .lineLimit(2)
                 
+                // Рейтинг фільму
                 HStack {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)

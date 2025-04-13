@@ -1,5 +1,4 @@
 import SwiftUI
-//import MovieAppTCA_Core
 
 struct MovieCard: View {
     let movie: Movie
